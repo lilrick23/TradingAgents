@@ -5,7 +5,7 @@ once the article limit is reached, so a Vietnamese stock's macro report was
 filled with US headlines and never reached the State Bank of Vietnam or the dong.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest import mock
 
 import pytest
@@ -68,7 +68,7 @@ def test_the_default_config_leads_a_vietnamese_run_with_vietnam(monkeypatch):
 
 @pytest.mark.unit
 def test_home_market_news_fills_the_limit_first(monkeypatch):
-    published = int(datetime(2025, 5, 8, tzinfo=timezone.utc).timestamp())
+    published = int(datetime(2025, 5, 8, tzinfo=UTC).timestamp())
 
     class FakeSearch:
         def __init__(self, query, **_):
